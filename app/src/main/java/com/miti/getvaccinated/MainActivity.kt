@@ -98,7 +98,7 @@ fun MainContent() {
                             .padding(top = 10.dp)
                             .width(50.dp)
                             .height(50.dp),
-                        painter = painterResource(id = R.drawable.ic_baseline_article_24),
+                        painter = painterResource(id = R.drawable.ic_baseline_data_saver_off_24),
                         contentDescription = null
                     )
 
