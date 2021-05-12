@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "651368021412",
+    "project_id": "getvaccinated-96d40",
+    "storage_bucket": "getvaccinated-96d40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651368021412:android:dea22d34bdd0d5da64d531",
+        "android_client_info": {
+          "package_name": "com.miti.getvaccinated"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651368021412-evv086567h9qfdj2f1ac9n5io1l2b845.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX1o3NIT2Yowd7ERkN_UZRa-PG0J4mG_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651368021412-evv086567h9qfdj2f1ac9n5io1l2b845.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
