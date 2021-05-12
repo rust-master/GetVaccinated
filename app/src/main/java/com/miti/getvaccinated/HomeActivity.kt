@@ -19,7 +19,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.miti.getvaccinated.ui.theme.GetVaccinatedTheme
@@ -28,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContent{
+        setContent {
             GetVaccinatedTheme {
                 Surface(color = Color.White) {
                     MainContent(this)
@@ -40,7 +39,6 @@ class HomeActivity : AppCompatActivity() {
 
 @Composable
 fun MainContent(context: Context) {
-
     Column() {
         Row() {
             Card(
@@ -49,7 +47,8 @@ fun MainContent(context: Context) {
                     .fillMaxWidth(0.50f)
                     .padding(start = 10.dp, end = 5.dp, top = 10.dp, bottom = 10.dp)
                     .clickable {
-                               val intent = Intent(context,SendRequestActivity::class.java)
+                        val intent = Intent(context, SendRequestActivity::class.java)
+                        context.startActivity(intent)
                     },
                 backgroundColor = Color.White,
                 shape = RoundedCornerShape(10.dp)
