@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "651368021412",
+    "firebase_url": "https://getvaccinated-96d40-default-rtdb.firebaseio.com",
     "project_id": "getvaccinated-96d40",
     "storage_bucket": "getvaccinated-96d40.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "651368021412-oojhnrn8dicb4teqhsiuvsojmm2oe2am.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.miti.getvaccinated",
+            "certificate_hash": "5bb77091bef52e576bc7ceead11897885eff9ed1"
+          }
+        },
         {
           "client_id": "651368021412-evv086567h9qfdj2f1ac9n5io1l2b845.apps.googleusercontent.com",
           "client_type": 3
