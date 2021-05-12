@@ -1,11 +1,13 @@
 package com.miti.getvaccinated
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -52,68 +54,6 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-@Preview
-@Composable
-fun MainContent() {
-
-    Column() {
-        Row() {
-            Card(
-                modifier = Modifier
-                    .height(150.dp)
-                    .fillMaxWidth(0.50f)
-                    .padding(start = 10.dp, end = 5.dp, top = 10.dp, bottom = 10.dp),
-                backgroundColor = Color.White,
-                shape = RoundedCornerShape(10.dp)
-
-            ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(
-                        modifier = Modifier
-                            .padding(top = 10.dp)
-                            .width(50.dp)
-                            .height(50.dp),
-                        painter = painterResource(id = R.drawable.ic_baseline_article_24),
-                        contentDescription = null
-                    )
-                    Text(
-                        modifier = Modifier.padding(top = 20.dp),
-                        text = "Application",
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-            }
-            Card(
-                modifier = Modifier
-                    .height(150.dp)
-                    .fillMaxWidth(1.50f)
-                    .padding(start = 5.dp, end = 10.dp, top = 10.dp, bottom = 10.dp),
-                backgroundColor = Color.White,
-                shape = RoundedCornerShape(10.dp)
-            ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(
-                        modifier = Modifier
-                            .padding(top = 10.dp)
-                            .width(50.dp)
-                            .height(50.dp),
-                        painter = painterResource(id = R.drawable.ic_baseline_data_saver_off_24),
-                        contentDescription = null
-                    )
-
-                    Text(
-                        modifier = Modifier.padding(top = 20.dp),
-                        text = "Track",
-                        textAlign = TextAlign.Center,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-            }
-        }
-    }
-}
 
 @Composable
 fun App(dbRef: DatabaseReference) {
