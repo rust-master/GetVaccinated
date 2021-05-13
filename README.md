@@ -1,5 +1,5 @@
 # GetVaccinated Android App
 CORONA Virus Vaccine Request App using Jetpack Compose and Firebase
 
-## OFFICAL Documentation
-<a >Jepack Compose</a>
+## Offical Documentation
+<a href="https://developer.android.com/jetpack/compose" >Jepack Compose</a>
