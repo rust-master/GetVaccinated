@@ -49,6 +49,7 @@ class SendRequestActivity : AppCompatActivity() {
 fun Send(dbRef: DatabaseReference) {
     val cnicValue = remember { mutableStateOf("") }
     val cityValue = remember { mutableStateOf("") }
+    val phoneValue = remember { mutableStateOf("") }
 
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter) {
         Column(
@@ -87,11 +88,18 @@ fun Send(dbRef: DatabaseReference) {
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(0.8f)
                 )
-
+                OutlinedTextField(
+                    value = phoneValue.value,
+                    onValueChange = { phoneValue.value = it },
+                    label = { Text(text = "Phone") },
+                    placeholder = { Text(text = "Phone") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(0.8f)
+                )
                 Spacer(modifier = Modifier.padding(10.dp))
                 Button(
                     onClick = {
-                        val model = ApplicationModel(cnicValue.value, cityValue.value)
+                        val model = ApplicationModel(cnicValue.value, cityValue.value, phoneValue.value)
                         dbRef.child(cnicValue.value).setValue(model)
                     },
                     modifier = Modifier
