@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         if (user != null) {
             val intent = Intent(this@MainActivity, HomeActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
@@ -104,6 +105,7 @@ class MainActivity : AppCompatActivity() {
                     val user = mAuth!!.currentUser
                     val intent = Intent(this@MainActivity, HomeActivity::class.java)
                     startActivity(intent)
+                    finish()
                 } else {
                     Toast.makeText(this@MainActivity, "Sorry auth failed!", Toast.LENGTH_SHORT)
                         .show()
