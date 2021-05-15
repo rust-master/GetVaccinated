@@ -1,5 +1,6 @@
 package com.miti.getvaccinated
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -23,6 +24,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.miti.getvaccinated.Model.ApplicationModel
 import com.miti.getvaccinated.ui.theme.GetVaccinatedTheme
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+
 
 class SendRequestActivity : AppCompatActivity() {
 
@@ -38,7 +41,7 @@ class SendRequestActivity : AppCompatActivity() {
         setContent {
             GetVaccinatedTheme {
                 Surface(color = Color.White) {
-                    Send(dbRef!!)
+                    Send(dbRef!!,this)
                 }
             }
         }
@@ -46,10 +49,18 @@ class SendRequestActivity : AppCompatActivity() {
 }
 
 @Composable
-fun Send(dbRef: DatabaseReference) {
+fun Send(dbRef: DatabaseReference, context: Context) {
     val cnicValue = remember { mutableStateOf("") }
     val cityValue = remember { mutableStateOf("") }
     val phoneValue = remember { mutableStateOf("") }
+    val signInAccount = GoogleSignIn.getLastSignedInAccount(context)
+    var displayName  = ""
+    var email = ""
+
+    if(signInAccount != null){
+        displayName = signInAccount.displayName.toString()
+        email = signInAccount.email.toString()
+    }
 
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter) {
         Column(
@@ -99,7 +110,7 @@ fun Send(dbRef: DatabaseReference) {
                 Spacer(modifier = Modifier.padding(10.dp))
                 Button(
                     onClick = {
-                        val model = ApplicationModel(cnicValue.value, cityValue.value, phoneValue.value)
+                        val model = ApplicationModel(cnicValue.value, cityValue.value, phoneValue.value, displayName,email)
                         dbRef.child(cnicValue.value).setValue(model)
                     },
                     modifier = Modifier
