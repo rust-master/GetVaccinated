@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.miti.getvaccinated.Model.ApplicationModel
 import com.miti.getvaccinated.ui.theme.GetVaccinatedTheme
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.firebase.auth.FirebaseAuth
 
 
 class SendRequestActivity : AppCompatActivity() {
@@ -38,6 +39,7 @@ class SendRequestActivity : AppCompatActivity() {
         db = FirebaseDatabase.getInstance()
         dbRef = db!!.getReference("Applications")
 
+
         setContent {
             GetVaccinatedTheme {
                 Surface(color = Color.White) {
@@ -50,6 +52,8 @@ class SendRequestActivity : AppCompatActivity() {
 
 @Composable
 fun Send(dbRef: DatabaseReference, context: Context) {
+    var uid = FirebaseAuth.getInstance().currentUser!!.uid
+
     val cnicValue = remember { mutableStateOf("") }
     val cityValue = remember { mutableStateOf("") }
     val phoneValue = remember { mutableStateOf("") }
@@ -111,7 +115,7 @@ fun Send(dbRef: DatabaseReference, context: Context) {
                 Button(
                     onClick = {
                         val model = ApplicationModel(cnicValue.value, cityValue.value, phoneValue.value, displayName,email)
-                        dbRef.child(cnicValue.value).setValue(model)
+                        dbRef.child(uid).setValue(model)
                     },
                     modifier = Modifier
                         .fillMaxWidth(0.8f)
