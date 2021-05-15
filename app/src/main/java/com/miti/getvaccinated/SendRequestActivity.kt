@@ -43,7 +43,7 @@ class SendRequestActivity : AppCompatActivity() {
         setContent {
             GetVaccinatedTheme {
                 Surface(color = Color.White) {
-                    Send(dbRef!!,this)
+                    Send(dbRef!!, this)
                 }
             }
         }
@@ -58,10 +58,10 @@ fun Send(dbRef: DatabaseReference, context: Context) {
     val cityValue = remember { mutableStateOf("") }
     val phoneValue = remember { mutableStateOf("") }
     val signInAccount = GoogleSignIn.getLastSignedInAccount(context)
-    var displayName  = ""
+    var displayName = ""
     var email = ""
 
-    if(signInAccount != null){
+    if (signInAccount != null) {
         displayName = signInAccount.displayName.toString()
         email = signInAccount.email.toString()
     }
@@ -114,7 +114,13 @@ fun Send(dbRef: DatabaseReference, context: Context) {
                 Spacer(modifier = Modifier.padding(10.dp))
                 Button(
                     onClick = {
-                        val model = ApplicationModel(cnicValue.value, cityValue.value, phoneValue.value, displayName,email)
+                        val model = ApplicationModel(
+                            cnicValue.value,
+                            cityValue.value,
+                            phoneValue.value,
+                            displayName,
+                            email
+                        )
                         dbRef.child(uid).setValue(model)
                     },
                     modifier = Modifier
