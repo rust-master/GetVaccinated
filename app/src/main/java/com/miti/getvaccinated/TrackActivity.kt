@@ -22,7 +22,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.miti.getvaccinated.ui.theme.GetVaccinatedTheme
 import com.google.firebase.database.DatabaseError
-
 import android.widget.Toast
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
