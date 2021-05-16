@@ -91,20 +91,19 @@ fun Track(name: MutableState<String>, city: MutableState<String>, email: Mutable
     Card(
         modifier = Modifier
             .fillMaxSize()
-            .padding(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 20.dp),
+            .padding(start = 10.dp, end = 10.dp, top = 10.dp, bottom = 10.dp),
         backgroundColor = Color.Transparent,
         shape = RoundedCornerShape(10.dp),
         border = BorderStroke(0.dp, color = Color.White),
         elevation = 10.dp
     ) {
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .background(color = Color.White)
         ) {
             Row {
                 Text(
-                    modifier = Modifier.padding(top = 20.dp),
+                    modifier = Modifier.padding(top = 20.dp, start = 10.dp),
                     text = "Name: ",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
@@ -118,7 +117,7 @@ fun Track(name: MutableState<String>, city: MutableState<String>, email: Mutable
             }
             Row {
                 Text(
-                    modifier = Modifier.padding(top = 20.dp),
+                    modifier = Modifier.padding(top = 20.dp, start = 10.dp),
                     text = "City: ",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
@@ -132,7 +131,7 @@ fun Track(name: MutableState<String>, city: MutableState<String>, email: Mutable
             }
             Row {
                 Text(
-                    modifier = Modifier.padding(top = 20.dp),
+                    modifier = Modifier.padding(top = 20.dp, start = 10.dp),
                     text = "Email: ",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
@@ -140,13 +139,13 @@ fun Track(name: MutableState<String>, city: MutableState<String>, email: Mutable
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
                     text = email.value,
-                    fontSize = 20.sp,
+                    fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
             }
             Row {
                 Text(
-                    modifier = Modifier.padding(top = 20.dp),
+                    modifier = Modifier.padding(top = 20.dp, start = 10.dp),
                     text = "Phone: ",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
@@ -160,7 +159,7 @@ fun Track(name: MutableState<String>, city: MutableState<String>, email: Mutable
             }
             Row {
                 Text(
-                    modifier = Modifier.padding(top = 20.dp),
+                    modifier = Modifier.padding(top = 20.dp, start = 10.dp),
                     text = "CNIC: ",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
@@ -174,7 +173,7 @@ fun Track(name: MutableState<String>, city: MutableState<String>, email: Mutable
             }
             Row {
                 Text(
-                    modifier = Modifier.padding(top = 20.dp),
+                    modifier = Modifier.padding(top = 20.dp, start = 10.dp),
                     text = "Status: ",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
@@ -182,6 +181,7 @@ fun Track(name: MutableState<String>, city: MutableState<String>, email: Mutable
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
                     text = status.value,
+                    color= Color.Red,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
