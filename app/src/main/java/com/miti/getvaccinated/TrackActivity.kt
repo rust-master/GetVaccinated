@@ -5,7 +5,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,6 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -51,18 +55,21 @@ class TrackActivity : AppCompatActivity() {
 
 @Composable
 fun Track(dbRef: DatabaseReference, context: Context) {
-    Column {
-        Card(
+    Card(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 20.dp),
+        backgroundColor = Color.Transparent,
+        shape = RoundedCornerShape(10.dp),
+        border = BorderStroke(0.dp, color = Color.White),
+        elevation = 10.dp
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .fillMaxSize()
-                .shadow(10.dp)
-                .padding(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 20.dp),
-            backgroundColor = Color.White,
-            shape = RoundedCornerShape(10.dp)
-
+                .background(color = Color.White)
         ) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Row() {
+                Row {
                     Text(
                         modifier = Modifier.padding(top = 20.dp),
                         text = "Name: ",
@@ -78,6 +85,6 @@ fun Track(dbRef: DatabaseReference, context: Context) {
                 }
 
             }
-        }
     }
+
 }
