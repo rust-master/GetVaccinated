@@ -12,7 +12,6 @@ import androidx.compose.material.Card
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -75,19 +74,26 @@ fun ApplicationData(dbRef: DatabaseReference, context: Context) {
             phone.value = model.phoneno.toString()
             cnicValue.value = model.cnic.toString()
             status.value = model.status.toString()
-            Toast.makeText(context, "Status: " + model!!.status, Toast.LENGTH_SHORT)
+            Toast.makeText(context, "Status: " + model.status, Toast.LENGTH_SHORT)
                 .show()
         }
 
         override fun onCancelled(error: DatabaseError) {}
     })
 
-    Track(name,city,email,phone,cnicValue,status)
+    Track(name, city, email, phone, cnicValue, status)
 
 }
 
 @Composable
-fun Track(name: MutableState<String>, city: MutableState<String>, email: MutableState<String>, phone: MutableState<String>, cnic: MutableState<String>, status: MutableState<String>) {
+fun Track(
+    name: MutableState<String>,
+    city: MutableState<String>,
+    email: MutableState<String>,
+    phone: MutableState<String>,
+    cnic: MutableState<String>,
+    status: MutableState<String>
+) {
     Card(
         modifier = Modifier
             .fillMaxSize()
@@ -181,7 +187,7 @@ fun Track(name: MutableState<String>, city: MutableState<String>, email: Mutable
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
                     text = status.value,
-                    color= Color.Red,
+                    color = Color.Red,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
