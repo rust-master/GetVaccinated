@@ -1,14 +1,11 @@
 package com.miti.getvaccinated
 
 import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -17,19 +14,23 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Outline
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.miti.getvaccinated.ui.theme.GetVaccinatedTheme
+import com.google.firebase.database.DatabaseError
+
+import android.widget.Toast
+
+import com.google.firebase.database.DataSnapshot
+
+import com.google.firebase.database.ValueEventListener
+import com.miti.getvaccinated.Model.ApplicationModel
+
 
 class TrackActivity : AppCompatActivity() {
 
@@ -39,14 +40,14 @@ class TrackActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
+        val uid = FirebaseAuth.getInstance().currentUser!!.uid
         db = FirebaseDatabase.getInstance()
-        dbRef = db!!.getReference("Applications")
+        dbRef = db!!.getReference("Applications").child(uid)
 
         setContent {
             GetVaccinatedTheme {
                 Surface(color = Color.White) {
-                    Track(dbRef!!, this)
+                    ApplicationData(dbRef!!, this)
                 }
             }
         }
@@ -54,7 +55,38 @@ class TrackActivity : AppCompatActivity() {
 }
 
 @Composable
-fun Track(dbRef: DatabaseReference, context: Context) {
+fun ApplicationData(dbRef: DatabaseReference, context: Context) {
+    var name: String = ""
+    var city: String = ""
+    var email: String = ""
+    var phone: String = ""
+    var cnic: String = ""
+    var status: String = ""
+
+    dbRef.addValueEventListener(object : ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot) {
+            val model: ApplicationModel? = snapshot.getValue(ApplicationModel::class.java)
+            name = model!!.displayName.toString()
+            city = model!!.city.toString()
+            email = model!!.email.toString()
+            phone = model!!.phoneno.toString()
+            cnic = model!!.cnic.toString()
+            status = model!!.status.toString()
+            Toast.makeText(context, "Status: " + model!!.status, Toast.LENGTH_SHORT)
+                .show()
+        }
+
+        override fun onCancelled(error: DatabaseError) {}
+    })
+
+    Track(name,city,email,phone,cnic,status)
+
+}
+
+@Composable
+fun Track(name: String, city: String, email: String, phone: String, cnic: String, status: String) {
+
+
     Card(
         modifier = Modifier
             .fillMaxSize()
@@ -69,20 +101,20 @@ fun Track(dbRef: DatabaseReference, context: Context) {
             modifier = Modifier
                 .background(color = Color.White)
         ) {
-                Row {
-                    Text(
-                        modifier = Modifier.padding(top = 20.dp),
-                        text = "Name: ",
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Text(
-                        modifier = Modifier.padding(top = 20.dp),
-                        text = "Zaryab",
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
+            Row {
+                Text(
+                    modifier = Modifier.padding(top = 20.dp),
+                    text = "Name: ",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    modifier = Modifier.padding(top = 20.dp),
+                    text = name,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
             Row {
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
@@ -92,7 +124,7 @@ fun Track(dbRef: DatabaseReference, context: Context) {
                 )
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
-                    text = "Sahiwal",
+                    text = city,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -106,7 +138,7 @@ fun Track(dbRef: DatabaseReference, context: Context) {
                 )
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
-                    text = "Zaryab@gmail.com",
+                    text = email,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -120,7 +152,7 @@ fun Track(dbRef: DatabaseReference, context: Context) {
                 )
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
-                    text = "03347860677",
+                    text = phone,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -134,7 +166,7 @@ fun Track(dbRef: DatabaseReference, context: Context) {
                 )
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
-                    text = "365027979",
+                    text = cnic,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -148,13 +180,13 @@ fun Track(dbRef: DatabaseReference, context: Context) {
                 )
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
-                    text = "Pending",
+                    text = status,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
             }
 
-            }
+        }
     }
 
 }
