@@ -15,6 +15,9 @@
             android:name=".SendRequestActivity"
             android:exported="true" />
         <activity
+            android:name=".TrackActivity"
+            android:exported="true" />
+        <activity
             android:name=".HomeActivity"
             android:exported="true" />
         <activity
