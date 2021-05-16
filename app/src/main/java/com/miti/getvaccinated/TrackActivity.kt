@@ -83,6 +83,76 @@ fun Track(dbRef: DatabaseReference, context: Context) {
                         fontWeight = FontWeight.Bold
                     )
                 }
+            Row {
+                Text(
+                    modifier = Modifier.padding(top = 20.dp),
+                    text = "City: ",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    modifier = Modifier.padding(top = 20.dp),
+                    text = "Sahiwal",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Row {
+                Text(
+                    modifier = Modifier.padding(top = 20.dp),
+                    text = "Email: ",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    modifier = Modifier.padding(top = 20.dp),
+                    text = "Zaryab@gmail.com",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Row {
+                Text(
+                    modifier = Modifier.padding(top = 20.dp),
+                    text = "Phone: ",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    modifier = Modifier.padding(top = 20.dp),
+                    text = "03347860677",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Row {
+                Text(
+                    modifier = Modifier.padding(top = 20.dp),
+                    text = "CNIC: ",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    modifier = Modifier.padding(top = 20.dp),
+                    text = "365027979",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Row {
+                Text(
+                    modifier = Modifier.padding(top = 20.dp),
+                    text = "Status: ",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    modifier = Modifier.padding(top = 20.dp),
+                    text = "Pending",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
 
             }
     }
