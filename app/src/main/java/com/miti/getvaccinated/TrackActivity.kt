@@ -35,6 +35,10 @@ class TrackActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+        db = FirebaseDatabase.getInstance()
+        dbRef = db!!.getReference("Applications")
+
         setContent {
             GetVaccinatedTheme {
                 Surface(color = Color.White) {
