@@ -22,8 +22,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.miti.getvaccinated.ui.theme.GetVaccinatedTheme
-import androidx.core.content.ContextCompat.startActivity
-
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -43,8 +41,8 @@ class HomeActivity : AppCompatActivity() {
 
 @Composable
 fun MainContent(context: Context) {
-    Column() {
-        Row() {
+    Column {
+        Row {
             Card(
                 modifier = Modifier
                     .height(150.dp)
@@ -106,7 +104,7 @@ fun MainContent(context: Context) {
                 }
             }
         }
-        Row() {
+        Row {
             Card(
                 modifier = Modifier
                     .height(150.dp)

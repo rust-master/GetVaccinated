@@ -30,8 +30,8 @@ import com.google.firebase.auth.FirebaseAuth
 
 class SendRequestActivity : AppCompatActivity() {
 
-    var db: FirebaseDatabase? = null
-    var dbRef: DatabaseReference? = null
+    private var db: FirebaseDatabase? = null
+    private var dbRef: DatabaseReference? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +52,7 @@ class SendRequestActivity : AppCompatActivity() {
 
 @Composable
 fun Send(dbRef: DatabaseReference, context: Context) {
-    var uid = FirebaseAuth.getInstance().currentUser!!.uid
+    val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
     val cnicValue = remember { mutableStateOf("") }
     val cityValue = remember { mutableStateOf("") }
