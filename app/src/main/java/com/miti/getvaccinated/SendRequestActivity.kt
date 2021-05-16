@@ -119,7 +119,8 @@ fun Send(dbRef: DatabaseReference, context: Context) {
                             cityValue.value,
                             phoneValue.value,
                             displayName,
-                            email
+                            email,
+                            "Pending"
                         )
                         dbRef.child(uid).setValue(model)
                     },

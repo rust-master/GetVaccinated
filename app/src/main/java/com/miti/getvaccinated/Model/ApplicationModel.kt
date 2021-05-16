@@ -6,6 +6,7 @@ class ApplicationModel {
     var phoneno: String? = null
     var displayName: String? = null
     var email: String? = null
+    var status: String? = null
 
     constructor() {}
     constructor(
@@ -13,13 +14,15 @@ class ApplicationModel {
         city: String?,
         phoneno: String?,
         displayName: String?,
-        email: String?
+        email: String?,
+        status: String?
     ) {
         this.cnic = cnic
         this.city = city
         this.phoneno = phoneno
         this.displayName = displayName
         this.email = email
+        this.status = status
     }
 
 
