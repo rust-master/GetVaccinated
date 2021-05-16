@@ -25,6 +25,9 @@ import com.miti.getvaccinated.ui.theme.GetVaccinatedTheme
 import com.google.firebase.database.DatabaseError
 
 import android.widget.Toast
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 
 import com.google.firebase.database.DataSnapshot
 
@@ -56,22 +59,22 @@ class TrackActivity : AppCompatActivity() {
 
 @Composable
 fun ApplicationData(dbRef: DatabaseReference, context: Context) {
-    var name: String = ""
-    var city: String = ""
-    var email: String = ""
-    var phone: String = ""
-    var cnic: String = ""
-    var status: String = ""
+    val name = remember { mutableStateOf("") }
+    val city = remember { mutableStateOf("") }
+    val email = remember { mutableStateOf("") }
+    val phone = remember { mutableStateOf("") }
+    val cnicValue = remember { mutableStateOf("") }
+    val status = remember { mutableStateOf("") }
 
     dbRef.addValueEventListener(object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
             val model: ApplicationModel? = snapshot.getValue(ApplicationModel::class.java)
-            name = model!!.displayName.toString()
-            city = model!!.city.toString()
-            email = model!!.email.toString()
-            phone = model!!.phoneno.toString()
-            cnic = model!!.cnic.toString()
-            status = model!!.status.toString()
+            name.value = model!!.displayName.toString()
+            city.value = model.city.toString()
+            email.value = model.email.toString()
+            phone.value = model.phoneno.toString()
+            cnicValue.value = model.cnic.toString()
+            status.value = model.status.toString()
             Toast.makeText(context, "Status: " + model!!.status, Toast.LENGTH_SHORT)
                 .show()
         }
@@ -79,14 +82,12 @@ fun ApplicationData(dbRef: DatabaseReference, context: Context) {
         override fun onCancelled(error: DatabaseError) {}
     })
 
-    Track(name,city,email,phone,cnic,status)
+    Track(name,city,email,phone,cnicValue,status)
 
 }
 
 @Composable
-fun Track(name: String, city: String, email: String, phone: String, cnic: String, status: String) {
-
-
+fun Track(name: MutableState<String>, city: MutableState<String>, email: MutableState<String>, phone: MutableState<String>, cnic: MutableState<String>, status: MutableState<String>) {
     Card(
         modifier = Modifier
             .fillMaxSize()
@@ -110,7 +111,7 @@ fun Track(name: String, city: String, email: String, phone: String, cnic: String
                 )
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
-                    text = name,
+                    text = name.value,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -124,7 +125,7 @@ fun Track(name: String, city: String, email: String, phone: String, cnic: String
                 )
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
-                    text = city,
+                    text = city.value,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -138,7 +139,7 @@ fun Track(name: String, city: String, email: String, phone: String, cnic: String
                 )
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
-                    text = email,
+                    text = email.value,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -152,7 +153,7 @@ fun Track(name: String, city: String, email: String, phone: String, cnic: String
                 )
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
-                    text = phone,
+                    text = phone.value,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -166,7 +167,7 @@ fun Track(name: String, city: String, email: String, phone: String, cnic: String
                 )
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
-                    text = cnic,
+                    text = cnic.value,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -180,7 +181,7 @@ fun Track(name: String, city: String, email: String, phone: String, cnic: String
                 )
                 Text(
                     modifier = Modifier.padding(top = 20.dp),
-                    text = status,
+                    text = status.value,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
