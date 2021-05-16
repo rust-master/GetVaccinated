@@ -79,7 +79,8 @@ fun MainContent(context: Context) {
                     .fillMaxWidth(1.50f)
                     .padding(start = 5.dp, end = 10.dp, top = 10.dp, bottom = 10.dp)
                     .clickable {
-
+                        val intent = Intent(context, TrackActivity::class.java)
+                        context.startActivity(intent)
                     },
                 backgroundColor = Color.White,
                 shape = RoundedCornerShape(10.dp)
