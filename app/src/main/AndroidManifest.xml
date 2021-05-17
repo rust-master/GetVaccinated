@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GetVaccinated">
         <activity
+            android:name=".LoginActivity"
+            android:exported="true"></activity>
+        <activity
             android:name=".SendRequestActivity"
             android:exported="true" />
         <activity
